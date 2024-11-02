@@ -54,9 +54,9 @@ router.get("/:id", authMiddleware, async (req, res) => {
 });
 router.put("/:id", authMiddleware, async (req, res) => {
   const { id } = req.params;
-  const { categoryName } = req.body;
+  const { categoryName,categoryDescription } = req.body;
   try {
-    await category.findByIdAndUpdate(id, { categoryName });
+    await category.findByIdAndUpdate(id, { categoryName,categoryDescription });
     res.status(200).json({ message: "Category updated successfully" });
   } catch (error) {
     console.error("Error updating category id", error);
